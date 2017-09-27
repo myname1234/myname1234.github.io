@@ -1,0 +1,791 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="学习,Python,面向对象," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="面向对象技术简介  类(Class): 用来描述具有相同的属性和方法的对象的集合。它定义了该集合中每个对象所共有的属性和方法。对象是类的实例。 类变量：类变量在整个实例化的对象中是公用的。类变量定义在类中且在函数体之外。类变量通常不作为实例变量使用。 数据成员：类变量或者实例变量用于处理类及其实例对象的相关的数据。 方法重写：如果从父类继承的方法不能满足子类的需求，可以对其进行改写，这个过程叫方法">
+<meta name="keywords" content="学习,Python,面向对象">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python 面向对象">
+<meta property="og:url" content="http://mynam1234.github.io/2017/09/27/Python-面向对象/index.html">
+<meta property="og:site_name" content="myname1234">
+<meta property="og:description" content="面向对象技术简介  类(Class): 用来描述具有相同的属性和方法的对象的集合。它定义了该集合中每个对象所共有的属性和方法。对象是类的实例。 类变量：类变量在整个实例化的对象中是公用的。类变量定义在类中且在函数体之外。类变量通常不作为实例变量使用。 数据成员：类变量或者实例变量用于处理类及其实例对象的相关的数据。 方法重写：如果从父类继承的方法不能满足子类的需求，可以对其进行改写，这个过程叫方法">
+<meta property="og:updated_time" content="2017-09-27T05:25:51.779Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Python 面向对象">
+<meta name="twitter:description" content="面向对象技术简介  类(Class): 用来描述具有相同的属性和方法的对象的集合。它定义了该集合中每个对象所共有的属性和方法。对象是类的实例。 类变量：类变量在整个实例化的对象中是公用的。类变量定义在类中且在函数体之外。类变量通常不作为实例变量使用。 数据成员：类变量或者实例变量用于处理类及其实例对象的相关的数据。 方法重写：如果从父类继承的方法不能满足子类的需求，可以对其进行改写，这个过程叫方法">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://mynam1234.github.io/2017/09/27/Python-面向对象/"/>
+
+
+
+
+
+  <title>Python 面向对象 | myname1234</title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">myname1234</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">wxy</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://mynam1234.github.io/2017/09/27/Python-面向对象/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="wxy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://oq3ea1dho.bkt.clouddn.com/360wallpaper201112721142.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="myname1234">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Python 面向对象</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-27T12:23:51+08:00">
+                2017-09-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Python/" itemprop="url" rel="index">
+                    <span itemprop="name">Python</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="面向对象技术简介"><a href="#面向对象技术简介" class="headerlink" title="面向对象技术简介"></a>面向对象技术简介</h1><ul>
+<li><strong> 类(Class):</strong> 用来描述具有相同的属性和方法的对象的集合。它定义了该集合中每个对象所共有的属性和方法。对象是类的实例。</li>
+<li>类变量：类变量在整个实例化的对象中是公用的。类变量定义在类中且在函数体之外。类变量通常不作为实例变量使用。</li>
+<li>数据成员：类变量或者实例变量用于处理类及其实例对象的相关的数据。</li>
+<li>方法重写：如果从父类继承的方法不能满足子类的需求，可以对其进行改写，这个过程叫方法的覆盖（override），也称为方法的重写。</li>
+<li>实例变量：定义在方法中的变量，只作用于当前实例的类。</li>
+<li>继承：即一个派生类（derived class）继承基类（base class）的字段和方法。继承也允许把一个派生类的对象作为一个基类对象对待。例如，有这样一个设计：一个Dog类型的对象派生自Animal类，这是模拟”是一个（is-a）”关系（例图，Dog是一个Animal）。</li>
+<li>实例化：创建一个类的实例，类的具体对象。</li>
+<li>方法：类中定义的函数。</li>
+<li>对象：通过类定义的数据结构实例。对象包括两个数据成员（类变量和实例变量）和方法。</li>
+</ul>
+<h1 id="创建类"><a href="#创建类" class="headerlink" title="创建类"></a>创建类</h1><p>使用class语句来创建一个新类，class之后为类的名称并以冒号结尾，如下实例:<br><figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">ClassName</span>:</span></div><div class="line">   <span class="string">'类的帮助信息'</span>   <span class="comment">#类文档字符串</span></div><div class="line">   class_suite  <span class="comment">#类体</span></div></pre></td></tr></table></figure></p>
+<p>类的帮助信息可以通过ClassName.<strong>doc</strong>查看。<br>class_suite 由类成员，方法，数据属性组成。</p>
+<p><strong>实例</strong><br><figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#!/usr/bin/python</span></div><div class="line"><span class="comment"># -*- coding: UTF-8 -*-</span></div><div class="line"> </div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Employee</span>:</span></div><div class="line">   <span class="string">'所有员工的基类'</span></div><div class="line">   empCount = <span class="number">0</span></div><div class="line"> </div><div class="line">   <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(<span class="keyword">self</span>, name, salary)</span></span>:</div><div class="line">      <span class="keyword">self</span>.name = name</div><div class="line">      <span class="keyword">self</span>.salary = salary</div><div class="line">      Employee.empCount += <span class="number">1</span></div><div class="line">   </div><div class="line">   <span class="function"><span class="keyword">def</span> <span class="title">displayCount</span><span class="params">(<span class="keyword">self</span>)</span></span>:</div><div class="line">     print <span class="string">"Total Employee %d"</span> % Employee.empCount</div><div class="line"> </div><div class="line">   <span class="function"><span class="keyword">def</span> <span class="title">displayEmployee</span><span class="params">(<span class="keyword">self</span>)</span></span>:</div><div class="line">      print <span class="string">"Name : "</span>, <span class="keyword">self</span>.name,  <span class="string">", Salary: "</span>, <span class="keyword">self</span>.salary</div></pre></td></tr></table></figure></p>
+<ul>
+<li>empCount 变量是一个类变量，它的值将在这个类的所有实例之间共享。你可以在内部类或外部类使用 Employee.empCount 访问。</li>
+<li>第一种方法<strong>init</strong>()方法是一种特殊的方法，被称为类的构造函数或初始化方法，当创建了这个类的实例时就会调用该方法</li>
+<li>self 代表类的实例，self 在定义类的方法时是必须有的，虽然在调用时不必传入相应的参数。</li>
+<li>self代表类的实例，而非类</li>
+<li>类的方法与普通的函数只有一个特别的区别——它们必须有一个额外的第一个参数名称, 按照惯例它的名称是 self。</li>
+</ul>
+<h1 id="创建实例对象"><a href="#创建实例对象" class="headerlink" title="创建实例对象"></a>创建实例对象</h1><p>实例化类其他编程语言中一般用关键字 new，但是在 Python 中并没有这个关键字，类的实例化类似函数调用方式。<br>以下使用类的名称 Employee 来实例化，并通过 <code>__init__</code> 方法接受参数。<br><figure class="highlight makefile"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="string">"创建 Employee 类的第一个对象"</span></div><div class="line">emp1 = Employee(<span class="string">"Zara"</span>, 2000)</div><div class="line"><span class="string">"创建 Employee 类的第二个对象"</span></div><div class="line">emp2 = Employee(<span class="string">"Manni"</span>, 5000)</div></pre></td></tr></table></figure></p>
+<h1 id="访问属性"><a href="#访问属性" class="headerlink" title="访问属性"></a>访问属性</h1><p>您可以使用点(.)来访问对象的属性。使用如下类的名称访问类变量:<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">emp1</span><span class="selector-class">.displayEmployee</span>()</div><div class="line"><span class="selector-tag">emp2</span><span class="selector-class">.displayEmployee</span>()</div><div class="line"><span class="selector-tag">print</span> "<span class="selector-tag">Total</span> <span class="selector-tag">Employee</span> %<span class="selector-tag">d</span>" % <span class="selector-tag">Employee</span><span class="selector-class">.empCount</span></div></pre></td></tr></table></figure></p>
+<p>完整实例：<br><figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#!/usr/bin/python</span></div><div class="line"><span class="comment"># -*- coding: UTF-8 -*-</span></div><div class="line"> </div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Employee</span>:</span></div><div class="line">   <span class="string">'所有员工的基类'</span></div><div class="line">   empCount = <span class="number">0</span></div><div class="line"> </div><div class="line">   <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(<span class="keyword">self</span>, name, salary)</span></span>:</div><div class="line">      <span class="keyword">self</span>.name = name</div><div class="line">      <span class="keyword">self</span>.salary = salary</div><div class="line">      Employee.empCount += <span class="number">1</span></div><div class="line">   </div><div class="line">   <span class="function"><span class="keyword">def</span> <span class="title">displayCount</span><span class="params">(<span class="keyword">self</span>)</span></span>:</div><div class="line">     print <span class="string">"Total Employee %d"</span> % Employee.empCount</div><div class="line"> </div><div class="line">   <span class="function"><span class="keyword">def</span> <span class="title">displayEmployee</span><span class="params">(<span class="keyword">self</span>)</span></span>:</div><div class="line">      print <span class="string">"Name : "</span>, <span class="keyword">self</span>.name,  <span class="string">", Salary: "</span>, <span class="keyword">self</span>.salary</div><div class="line"> </div><div class="line"><span class="string">"创建 Employee 类的第一个对象"</span></div><div class="line">emp1 = Employee(<span class="string">"Zara"</span>, <span class="number">2000</span>)</div><div class="line"><span class="string">"创建 Employee 类的第二个对象"</span></div><div class="line">emp2 = Employee(<span class="string">"Manni"</span>, <span class="number">5000</span>)</div><div class="line">emp1.displayEmployee()</div><div class="line">emp2.displayEmployee()</div><div class="line">print <span class="string">"Total Employee %d"</span> % Employee.empCount</div></pre></td></tr></table></figure></p>
+<p>执行以上代码输出结果如下：<br><figure class="highlight groovy"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="string">Name :</span>  Zara ,<span class="string">Salary:</span>  <span class="number">2000</span></div><div class="line"><span class="string">Name :</span>  Manni ,<span class="string">Salary:</span>  <span class="number">5000</span></div><div class="line">Total Employee <span class="number">2</span></div></pre></td></tr></table></figure></p>
+<p>你可以添加，删除，修改类的属性，如下所示：<br><figure class="highlight autoit"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">emp1.age = <span class="number">7</span>  <span class="meta"># 添加一个 <span class="string">'age'</span> 属性</span></div><div class="line">emp1.age = <span class="number">8</span>  <span class="meta"># 修改 <span class="string">'age'</span> 属性</span></div><div class="line">del emp1.age  <span class="meta"># 删除 <span class="string">'age'</span> 属性</span></div></pre></td></tr></table></figure></p>
+<p>你也可以使用以下函数的方式来访问属性：</p>
+<ul>
+<li>getattr(obj, name[, default]) : 访问对象的属性。</li>
+<li>hasattr(obj,name) : 检查是否存在一个属性。</li>
+<li>setattr(obj,name,value) : 设置一个属性。如果属性不存在，会创建一个新属性。</li>
+<li>delattr(obj, name) : 删除属性。<figure class="highlight clean"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">hasattr(emp1, <span class="string">'age'</span>)    # 如果存在 <span class="string">'age'</span> 属性返回 <span class="literal">True</span>。</div><div class="line">getattr(emp1, <span class="string">'age'</span>)    # 返回 <span class="string">'age'</span> 属性的值</div><div class="line">setattr(emp1, <span class="string">'age'</span>, <span class="number">8</span>) # 添加属性 <span class="string">'age'</span> 值为 <span class="number">8</span></div><div class="line">delattr(empl, <span class="string">'age'</span>)    # 删除属性 <span class="string">'age'</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h1 id="Python内置类属性"><a href="#Python内置类属性" class="headerlink" title="Python内置类属性"></a>Python内置类属性</h1><ul>
+<li><code>__dict__</code> : 类的属性（包含一个字典，由类的数据属性组成）</li>
+<li><code>__doc__</code> :类的文档字符串</li>
+<li><code>__name__</code>: 类名</li>
+<li><code>__module__</code>: 类定义所在的模块（类的全名是’<code>__main__.className</code>‘，如果类位于一个导入模块mymod中，那么<code>className.__module__</code> 等于 mymod）</li>
+<li><code>__bases__</code> : 类的所有父类构成元素（包含了一个由所有父类组成的元组）</li>
+</ul>
+<p>Python内置类属性调用实例如下：<br><figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#!/usr/bin/python</span></div><div class="line"><span class="comment"># -*- coding: UTF-8 -*-</span></div><div class="line"> </div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Employee</span>:</span></div><div class="line">   <span class="string">'所有员工的基类'</span></div><div class="line">   empCount = <span class="number">0</span></div><div class="line"> </div><div class="line">   <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(<span class="keyword">self</span>, name, salary)</span></span>:</div><div class="line">      <span class="keyword">self</span>.name = name</div><div class="line">      <span class="keyword">self</span>.salary = salary</div><div class="line">      Employee.empCount += <span class="number">1</span></div><div class="line">   </div><div class="line">   <span class="function"><span class="keyword">def</span> <span class="title">displayCount</span><span class="params">(<span class="keyword">self</span>)</span></span>:</div><div class="line">     print <span class="string">"Total Employee %d"</span> % Employee.empCount</div><div class="line"> </div><div class="line">   <span class="function"><span class="keyword">def</span> <span class="title">displayEmployee</span><span class="params">(<span class="keyword">self</span>)</span></span>:</div><div class="line">      print <span class="string">"Name : "</span>, <span class="keyword">self</span>.name,  <span class="string">", Salary: "</span>, <span class="keyword">self</span>.salary</div><div class="line"> </div><div class="line">print <span class="string">"Employee.__doc__:"</span>, Employee.__doc_<span class="number">_</span></div><div class="line">print <span class="string">"Employee.__name__:"</span>, Employee.__name_<span class="number">_</span></div><div class="line">print <span class="string">"Employee.__module__:"</span>, Employee.__module_<span class="number">_</span></div><div class="line">print <span class="string">"Employee.__bases__:"</span>, Employee.__bases_<span class="number">_</span></div><div class="line">print <span class="string">"Employee.__dict__:"</span>, Employee.__dict_<span class="number">_</span></div></pre></td></tr></table></figure></p>
+<p>执行以上代码输出结果如下：<br><figure class="highlight taggerscript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">Employee.__doc__: 所有员工的基类</div><div class="line">Employee.__name__: Employee</div><div class="line">Employee.__module__: __main__</div><div class="line">Employee.__bases__: ()</div><div class="line">Employee.__dict__: &#123;'__module__': '__main__', 'displayCount': &lt;function displayCount at 0x10a939c80&gt;, 'empCount': 0, 'displayEmployee': &lt;function displayEmployee at 0x10a93caa0&gt;, '__doc__': '<span class="symbol">\x</span>e6<span class="symbol">\x</span>89<span class="symbol">\x</span>80<span class="symbol">\x</span>e6<span class="symbol">\x</span>9c<span class="symbol">\x</span>89<span class="symbol">\x</span>e5<span class="symbol">\x</span>91<span class="symbol">\x</span>98<span class="symbol">\x</span>e5<span class="symbol">\x</span>b7<span class="symbol">\x</span>a5<span class="symbol">\x</span>e7<span class="symbol">\x</span>9a<span class="symbol">\x</span>84<span class="symbol">\x</span>e5<span class="symbol">\x</span>9f<span class="symbol">\x</span>ba<span class="symbol">\x</span>e7<span class="symbol">\x</span>b1<span class="symbol">\x</span>bb', '__init__': &lt;function __init__ at 0x10a939578&gt;&#125;</div></pre></td></tr></table></figure></p>
+<h1 id="类的继承"><a href="#类的继承" class="headerlink" title="类的继承"></a>类的继承</h1><p>面向对象的编程带来的主要好处之一是代码的重用，实现这种重用的方法之一是通过继承机制。继承完全可以理解成类之间的类型和子类型关系。<br>需要注意的地方：继承语法 class 派生类名（基类名）：//… 基类名写在括号里，基本类是在类定义的时候，在元组之中指明的。<br>在python中继承中的一些特点：</p>
+<ul>
+<li>在继承中基类的构造（<strong>init</strong>()方法）不会被自动调用，它需要在其派生类的构造中亲自专门调用。</li>
+<li>在调用基类的方法时，需要加上基类的类名前缀，且需要带上self参数变量。区别于在类中调用普通函数时并不需要带上self参数</li>
+<li>Python总是首先查找对应类型的方法，如果它不能在派生类中找到对应的方法，它才开始到基类中逐个查找。（先在本类中查找调用的方法，找不到才去基类中找）。<br>如果在继承元组中列了一个以上的类，那么它就被称作”多重继承” 。<br><strong>语法：</strong><br>派生类的声明，与他们的父类类似，继承的基类列表跟在类名之后，如下所示：<figure class="highlight haskell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="type">SubClassName</span> (<span class="type">ParentClass1</span>[, <span class="type">ParentClass2</span>, ...]):</span></div><div class="line">   '<span class="type">Optional</span> <span class="keyword">class</span> documentation string'</div><div class="line">   class_suite</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><strong>实例</strong><br><figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#!/usr/bin/python</span></div><div class="line"><span class="comment"># -*- coding: UTF-8 -*-</span></div><div class="line"> </div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Parent</span>:        <span class="comment"># 定义父类</span></span></div><div class="line">   parentAttr = <span class="number">100</span></div><div class="line">   <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(<span class="keyword">self</span>)</span></span>:</div><div class="line">      print <span class="string">"调用父类构造函数"</span></div><div class="line"> </div><div class="line">   <span class="function"><span class="keyword">def</span> <span class="title">parentMethod</span><span class="params">(<span class="keyword">self</span>)</span></span>:</div><div class="line">      print <span class="string">'调用父类方法'</span></div><div class="line"> </div><div class="line">   <span class="function"><span class="keyword">def</span> <span class="title">setAttr</span><span class="params">(<span class="keyword">self</span>, attr)</span></span>:</div><div class="line">      Parent.parentAttr = attr</div><div class="line"> </div><div class="line">   <span class="function"><span class="keyword">def</span> <span class="title">getAttr</span><span class="params">(<span class="keyword">self</span>)</span></span>:</div><div class="line">      print <span class="string">"父类属性 :"</span>, Parent.parentAttr</div><div class="line"> </div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Child</span>(<span class="title">Parent</span>): <span class="comment"># 定义子类</span></span></div><div class="line">   <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(<span class="keyword">self</span>)</span></span>:</div><div class="line">      print <span class="string">"调用子类构造方法"</span></div><div class="line"> </div><div class="line">   <span class="function"><span class="keyword">def</span> <span class="title">childMethod</span><span class="params">(<span class="keyword">self</span>)</span></span>:</div><div class="line">      print <span class="string">'调用子类方法'</span></div><div class="line"> </div><div class="line">c = Child()          <span class="comment"># 实例化子类</span></div><div class="line">c.childMethod()      <span class="comment"># 调用子类的方法</span></div><div class="line">c.parentMethod()     <span class="comment"># 调用父类方法</span></div><div class="line">c.setAttr(<span class="number">200</span>)       <span class="comment"># 再次调用父类的方法 - 设置属性值</span></div><div class="line">c.getAttr()          <span class="comment"># 再次调用父类的方法 - 获取属性值</span></div></pre></td></tr></table></figure></p>
+<p>以上代码执行结果如下：<br><figure class="highlight ada"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">调用子类构造方法</div><div class="line">调用子类方法</div><div class="line">调用父类方法</div><div class="line">父类属性 : 200</div></pre></td></tr></table></figure></p>
+<p>你可以继承多个类<br><figure class="highlight clean"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">class</span> A:        # 定义类 A</div><div class="line">.....</div><div class="line"></div><div class="line"><span class="keyword">class</span> B:         # 定义类 B</div><div class="line">.....</div><div class="line"></div><div class="line"><span class="keyword">class</span> C(A, B):   # 继承类 A 和 B</div><div class="line">.....</div></pre></td></tr></table></figure></p>
+<p>你可以使用issubclass()或者isinstance()方法来检测。</p>
+<ul>
+<li>issubclass() - 布尔函数判断一个类是另一个类的子类或者子孙类，语法：issubclass(sub,sup)</li>
+<li>isinstance(obj, Class) 布尔函数如果obj是Class类的实例对象或者是一个Class子类的实例对象则返回true。<h1 id="方法重写"><a href="#方法重写" class="headerlink" title="方法重写"></a>方法重写</h1>如果你的父类方法的功能不能满足你的需求，你可以在子类重写你父类的方法：<br>实例：<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#!/usr/bin/python</span></div><div class="line"><span class="comment"># -*- coding: UTF-8 -*-</span></div><div class="line"> </div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Parent</span>:</span>        <span class="comment"># 定义父类</span></div><div class="line">   <span class="function"><span class="keyword">def</span> <span class="title">myMethod</span><span class="params">(self)</span>:</span></div><div class="line">      <span class="keyword">print</span> <span class="string">'调用父类方法'</span></div><div class="line"> </div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Child</span><span class="params">(Parent)</span>:</span> <span class="comment"># 定义子类</span></div><div class="line">   <span class="function"><span class="keyword">def</span> <span class="title">myMethod</span><span class="params">(self)</span>:</span></div><div class="line">      <span class="keyword">print</span> <span class="string">'调用子类方法'</span></div><div class="line"> </div><div class="line">c = Child()          <span class="comment"># 子类实例</span></div><div class="line">c.myMethod()         <span class="comment"># 子类调用重写方法</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>执行以上代码输出结果如下：<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">调用子类方法</div></pre></td></tr></table></figure></p>
+<h2 id="基础重载方法"><a href="#基础重载方法" class="headerlink" title="基础重载方法"></a>基础重载方法</h2><p>下表列出了一些通用的功能，你可以在自己的类重写：<br>序号    方法, 描述 &amp; 简单的调用<br><figure class="highlight armasm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="number">1</span>	__init__ ( <span class="keyword">self </span>[,args...] )</div><div class="line">构造函数</div><div class="line">简单的调用方法: obj = className(args)</div><div class="line"><span class="number">2</span>	__del__( <span class="keyword">self </span>)</div><div class="line">析构方法, 删除一个对象</div><div class="line">简单的调用方法 : del obj</div><div class="line"><span class="number">3</span>	__repr__( <span class="keyword">self </span>)</div><div class="line">转化为供解释器读取的形式</div><div class="line">简单的调用方法 : repr(obj)</div><div class="line"><span class="number">4</span>	__str__( <span class="keyword">self </span>)</div><div class="line">用于将值转化为适于人阅读的形式</div><div class="line">简单的调用方法 : <span class="keyword">str(obj)</span></div><div class="line"><span class="number">5</span>	__cmp__ ( <span class="keyword">self, </span>x )</div><div class="line">对象比较</div><div class="line">简单的调用方法 : <span class="keyword">cmp(obj, </span>x)</div></pre></td></tr></table></figure></p>
+<h1 id="运算符重载"><a href="#运算符重载" class="headerlink" title="运算符重载"></a>运算符重载</h1><p>Python同样支持运算符重载，实例如下：<br>实例<br><figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#!/usr/bin/python</span></div><div class="line"> </div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Vector</span>:</span></div><div class="line">   <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(<span class="keyword">self</span>, a, b)</span></span>:</div><div class="line">      <span class="keyword">self</span>.a = a</div><div class="line">      <span class="keyword">self</span>.b = b</div><div class="line"> </div><div class="line">   <span class="function"><span class="keyword">def</span> <span class="title">__str__</span><span class="params">(<span class="keyword">self</span>)</span></span>:</div><div class="line">      <span class="keyword">return</span> <span class="string">'Vector (%d, %d)'</span> % (<span class="keyword">self</span>.a, <span class="keyword">self</span>.b)</div><div class="line">   </div><div class="line">   <span class="function"><span class="keyword">def</span> <span class="title">__add__</span><span class="params">(<span class="keyword">self</span>,other)</span></span>:</div><div class="line">      <span class="keyword">return</span> Vector(<span class="keyword">self</span>.a + other.a, <span class="keyword">self</span>.b + other.b)</div><div class="line"> </div><div class="line">v1 = Vector(<span class="number">2</span>,<span class="number">10</span>)</div><div class="line">v2 = Vector(<span class="number">5</span>,-<span class="number">2</span>)</div><div class="line">print v1 + v2</div></pre></td></tr></table></figure></p>
+<p>以上代码执行结果如下所示:<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="title">Vector</span><span class="params">(<span class="number">7</span>,<span class="number">8</span>)</span></span></div></pre></td></tr></table></figure></p>
+<h1 id="类属性与方法"><a href="#类属性与方法" class="headerlink" title="类属性与方法"></a>类属性与方法</h1><h2 id="类的私有属性"><a href="#类的私有属性" class="headerlink" title="类的私有属性"></a>类的私有属性</h2><p><strong>private_attrs：两个下划线开头，声明该属性为私有，不能在类的外部被使用或直接访问。在类内部的方法中使用时 self.</strong>private_attrs。</p>
+<h2 id="类的方法"><a href="#类的方法" class="headerlink" title="类的方法"></a>类的方法</h2><p>在类的内部，使用 def 关键字可以为类定义一个方法，与一般函数定义不同，类方法必须包含参数 self,且为第一个参数</p>
+<h2 id="类的私有方法"><a href="#类的私有方法" class="headerlink" title="类的私有方法"></a>类的私有方法</h2><p><strong>private_method：两个下划线开头，声明该方法为私有方法，不能在类地外部调用。在类的内部调用 self.</strong>private_methods<br>实例<br><figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#!/usr/bin/python</span></div><div class="line"><span class="comment"># -*- coding: UTF-8 -*-</span></div><div class="line"> </div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">JustCounter</span>:</span></div><div class="line">    __secretCount = <span class="number">0</span>  <span class="comment"># 私有变量</span></div><div class="line">    publicCount = <span class="number">0</span>    <span class="comment"># 公开变量</span></div><div class="line"> </div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">count</span><span class="params">(<span class="keyword">self</span>)</span></span>:</div><div class="line">        <span class="keyword">self</span>.__secretCount += <span class="number">1</span></div><div class="line">        <span class="keyword">self</span>.publicCount += <span class="number">1</span></div><div class="line">        print <span class="keyword">self</span>.__secretCount</div><div class="line"> </div><div class="line">counter = JustCounter()</div><div class="line">counter.count()</div><div class="line">counter.count()</div><div class="line">print counter.publicCount</div><div class="line">print counter.__secretCount  <span class="comment"># 报错，实例不能访问私有变量</span></div></pre></td></tr></table></figure></p>
+<p>Python 通过改变名称来包含类名:<br><figure class="highlight smali"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">1</div><div class="line">2</div><div class="line">2</div><div class="line">Traceback (most recent call last):</div><div class="line">  File <span class="string">"test.py"</span>, line 17, in &lt;module&gt;</div><div class="line">    print counter.__secretCount  <span class="comment"># 报错，实例不能访问私有变量</span></div><div class="line">AttributeError: JustCounter<span class="built_in"> instance </span>has no attribute '__secretCount'</div></pre></td></tr></table></figure></p>
+<p>Python不允许实例化的类访问私有数据，但你可以使用 object._className__attrName 访问属性，将如下代码替换以上代码的最后一行代码：<br><figure class="highlight clean"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">.........................</div><div class="line">print counter._JustCounter__secretCount</div></pre></td></tr></table></figure></p>
+<p>执行以上代码，执行结果如下：<br><figure class="highlight lsl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="number">1</span></div><div class="line"><span class="number">2</span></div><div class="line"><span class="number">2</span></div><div class="line"><span class="number">2</span></div></pre></td></tr></table></figure></p>
+<h1 id="单下划线、双下划线、头尾双下划线说明："><a href="#单下划线、双下划线、头尾双下划线说明：" class="headerlink" title="单下划线、双下划线、头尾双下划线说明："></a>单下划线、双下划线、头尾双下划线说明：</h1><ul>
+<li><code>__foo__</code>: 定义的是特列方法，类似 <code>__init__()</code> 之类的。</li>
+<li><code>_foo</code>: 以单下划线开头的表示的是 <code>protected</code> 类型的变量，即保护类型只能允许其本身与子类进行访问，不能用于 <code>from module import *</code></li>
+<li><code>__foo</code>: 双下划线的表示的是私有类型(<code>private</code>)的变量, 只能是允许这个类本身进行访问了。</li>
+</ul>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/学习/" rel="tag"># 学习</a>
+          
+            <a href="/tags/Python/" rel="tag"># Python</a>
+          
+            <a href="/tags/面向对象/" rel="tag"># 面向对象</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/09/26/Python-函数/" rel="next" title="Python 函数">
+                <i class="fa fa-chevron-left"></i> Python 函数
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://oq3ea1dho.bkt.clouddn.com/360wallpaper201112721142.jpg"
+               alt="wxy" />
+          <p class="site-author-name" itemprop="name">wxy</p>
+           
+              <p class="site-description motion-element" itemprop="description">hello world</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#面向对象技术简介"><span class="nav-number">1.</span> <span class="nav-text">面向对象技术简介</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#创建类"><span class="nav-number">2.</span> <span class="nav-text">创建类</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#创建实例对象"><span class="nav-number">3.</span> <span class="nav-text">创建实例对象</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#访问属性"><span class="nav-number">4.</span> <span class="nav-text">访问属性</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Python内置类属性"><span class="nav-number">5.</span> <span class="nav-text">Python内置类属性</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#类的继承"><span class="nav-number">6.</span> <span class="nav-text">类的继承</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#方法重写"><span class="nav-number">7.</span> <span class="nav-text">方法重写</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#基础重载方法"><span class="nav-number">7.1.</span> <span class="nav-text">基础重载方法</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#运算符重载"><span class="nav-number">8.</span> <span class="nav-text">运算符重载</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#类属性与方法"><span class="nav-number">9.</span> <span class="nav-text">类属性与方法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#类的私有属性"><span class="nav-number">9.1.</span> <span class="nav-text">类的私有属性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#类的方法"><span class="nav-number">9.2.</span> <span class="nav-text">类的方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#类的私有方法"><span class="nav-number">9.3.</span> <span class="nav-text">类的私有方法</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#单下划线、双下划线、头尾双下划线说明："><span class="nav-number">10.</span> <span class="nav-text">单下划线、双下划线、头尾双下划线说明：</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">wxy</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
